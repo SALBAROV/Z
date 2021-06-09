@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,18 +11,32 @@ public class Main {
         int kolichestvo = 0;
         boolean isPositive = false;
 
-        for (double d:arr) {
-            if (d<0){
+        for (double d : arr) {
+            if (d < 0) {
                 isPositive = true;
-            }
-            else if (isPositive){
+            } else if (isPositive) {
                 sum = sum + d;
                 kolichestvo++;
             }
         }
         double result = sum / kolichestvo;
-        System.out.println("result;"+result);
+        System.out.println("result;" + result);
 
 
+        boolean isSorted = false;
+
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 1; i < arr.length; i++) {
+                if (arr[i] < arr[i - 1]) {
+                    double temp = arr[i];
+                arr[i] = arr[i - 1];
+                arr[i - 1] = temp;
+                isSorted = false;
+                }
+            }
+            System.out.println(Arrays.toString(arr));
+
+        }
     }
 }
